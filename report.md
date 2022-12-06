@@ -14,7 +14,7 @@ conda activate bio_tools
 fastqc Aedes_Recife_R1.fastq
 ```
 
-4. Identified increased variance (and decrease in overall trend) of base call quality beginning around a base position of 60. Also identified presence of 'Illumina Universal Adapter' content. Review output here: [Aedes_Recife_R1.fastq FastQC Report.pdf](https://github.com/forty2wallabyway/2022_MIP_280A4_final_project/files/10167081/Aedes_Recife_R1.fastq.FastQC.Report.pdf)
+4. Identified increased variance (and decrease in overall trend) of base call quality beginning around base position 60. Also identified presence of 'Illumina Universal Adapter' content. Review output here: [Aedes_Recife_R1.fastq FastQC Report.pdf](https://github.com/forty2wallabyway/2022_MIP_280A4_final_project/files/10167081/Aedes_Recife_R1.fastq.FastQC.Report.pdf)
 
 5. Trim adapter sequences and low quality bases using Cutadapt v3.5  
 ```
@@ -26,14 +26,14 @@ cutadapt \
   Aedes_Recife_R1.fastq \  
   | tee cutadapt2.log
 ```  
-Review output here: [cutadapt2.log](https://github.com/forty2wallabyway/2022_MIP_280A4_final_project/files/10167019/cutadapt2.log)
+Identified 4,095,494 reads in total. Removing adapter sequences (5.9%) and low quality reads (12.7%) yielded a remaining 3,574,307 reads. Review output here: [cutadapt2.log](https://github.com/forty2wallabyway/2022_MIP_280A4_final_project/files/10167019/cutadapt2.log)
 
 6. Analyze sequence data again with Fastqc v0.11
 ```
 fastqc Aedes_Recife_R1_trimmed2.fastq
 ```
 
-7. Identified decreased variance (and increase in overall trend) of base call quality beginning around a base position of 85. Also identified absence of 'Illumina Universal Adapter' content. Review output here: [Aedes_Recife_R1_trimmed2.fastq FastQC Report.pdf](https://github.com/forty2wallabyway/2022_MIP_280A4_final_project/files/10167093/Aedes_Recife_R1_trimmed2.fastq.FastQC.Report.pdf)
+7. Identified decreased variance (and increase in overall trend) of base call quality beginning around base position 85. Also identified absence of 'Illumina Universal Adapter' content. Review output here: [Aedes_Recife_R1_trimmed2.fastq FastQC Report.pdf](https://github.com/forty2wallabyway/2022_MIP_280A4_final_project/files/10167093/Aedes_Recife_R1_trimmed2.fastq.FastQC.Report.pdf)
 
 8. Download *Aedes aegypti* genome from RefSeq database into working directory on thoth01 server
 ```
@@ -55,7 +55,7 @@ bowtie2 -x aedes_aeg_index \
   -S aedes_recife_mapped_to_aegypti_genome.sam \
   --un unmapped_aedes_reads.fastq
 ```
-Identified that 99.26% of reads mapped to *A. aegypti* genome, as expected. Review output here: [Mapping_against_aedes_output.txt](https://github.com/forty2wallabyway/2022_MIP_280A4_final_project/files/10167014/Mapping_against_aedes_output.txt)
+Identified 99.26% of reads mapped to *A. aegypti* genome, as expected. Review output here: [Mapping_against_aedes_output.txt](https://github.com/forty2wallabyway/2022_MIP_280A4_final_project/files/10167014/Mapping_against_aedes_output.txt)
 
 11. Assemble remaining, non-mapped reads (0.74% of trimmed and host-filtered data) using Spades v3.15
 ```
@@ -65,7 +65,7 @@ spades.py -o non_mapped_reads_assembly \
 ```
 Generated 135 contigs (nodes) varying in length from 229 to 6,781 bp. Review output here: [contigs_from_unmapped_reads.txt](https://github.com/forty2wallabyway/2022_MIP_280A4_final_project/files/10167054/contigs_from_unmapped_reads.txt)
 
-### To validate and further characterized assembled contigs:
+### Validation and further characterization of assembled contigs:
 
 12. Build new index from assembled contigs using Bowtie2 v2.4
 ```
@@ -82,3 +82,9 @@ Identified a lower-than-expected overall alignment rate of 66.69%. It is likely 
 14. Using Geneious v2022.2.2, import unmapped_reads_validation.sam along with contigs.fasta output from Spades assembly. Sort contigs by 'The number of sequences in an alignment or set of sequences' filter. This will allow for identification of the **top 12** contigs with the greatest coverage depth. 
 
 15. BLAST each of the 12 contigs identified in the previous step using the [blastn tool](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome) on the NCBI website. 
+
+Report of identified contigs, including average coverage depth, can be reviewed here: [final_contigs_table.pdf](https://github.com/forty2wallabyway/2022_MIP_280A4_final_project/files/10169713/final_contigs_table.pdf)
+
+### Assessment of pairwise identity and variant analysis of Phasi Charoen-like virus (PCLV) segments M, L, and S identified from contigs 3, 1, and 11, respectively
+
+16. 
