@@ -85,6 +85,17 @@ Identified a lower-than-expected overall alignment rate of 66.69%. It is likely 
 
 Report of identified contigs, including average coverage depth, can be reviewed here: [final_contigs_table.pdf](https://github.com/forty2wallabyway/2022_MIP_280A4_final_project/files/10169713/final_contigs_table.pdf)
 
-### Assessment of pairwise identity and variant analysis of Phasi Charoen-like virus (PCLV) segments M, L, and S identified from contigs 3, 1, and 11, respectively
+### Assessment of pairwise identity and variant analysis of Yeltsovka tombus-like virus (YTLV) putative polyprotein from contig 2
 
-16. 
+16. Build index from Yeltsovka tombus-like virus isolate Koltsovo (MW251332.1) using Bowtie v2.4
+```
+bowtie2-build YTLV.fasta YTLV_index
+```
+Note: *YTLV.fasta* was downloaded from NCBI and moved into the thoth01 working directory using stfp. 
+
+17. Map previously unmapped reads against index built from YTLV.fasta
+```
+bowtie2 -x YTLV_index --local -U unmapped_aedes_reads.fastq --no-unal --threads 24 -S YTLV_mapped_reads.sam
+```
+
+### Assessment of pairwise identity and variant analysis of Phasi Charoen-like virus (PCLV) segments M from contigs 3
