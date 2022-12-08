@@ -15,4 +15,4 @@ To accomplish the aim of this project, sequence reads will be quality assesed, t
 ### Analysis & Outputs
 - A detailed workflow (including shell commands) of the bioinformatic analysis conducted for this project can be found in this repo's [report.md](https://github.com/forty2wallabyway/2022_MIP_280A4_final_project/blob/289c6ae8d4768d59acb9e8be637140568838ed4e/report.md) 
 
-- A PDF report of the analysis, including biological interpretation, can be reviewed in XXX 
+- A PDF report of the analysis, including biological interpretation, can be reviewed in [Final_Presentation_Sherman.pdf](https://github.com/forty2wallabyway/2022_MIP_280A4_final_project/files/10186521/Final_Presentation_Sherman.pdf)
